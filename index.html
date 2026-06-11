@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나의 커리어 로드맵 — 김종민</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+    :root {
+      --primary: #1E3A8A;
+      --accent: #3B82F6;
+      --highlight: #FBBF24;
+      --bg: #0A0F1E;
+      --control-bg: rgba(10, 15, 30, 0.95);
+      --font: 'Pretendard', -apple-system, system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: #F8FAFC;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* ── Top bar ── */
+    #topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 52px;
+      background: var(--control-bg);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+      flex-shrink: 0;
+      gap: 16px;
+    }
+
+    #topbar .title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #F8FAFC;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #topbar .title span {
+      color: var(--highlight);
+    }
+
+    /* thumbnail strip */
+    #thumb-strip {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      flex: 1;
+      justify-content: center;
+    }
+    #thumb-strip::-webkit-scrollbar { display: none; }
+
+    .thumb-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .thumb-dot.active {
+      background: var(--highlight);
+      transform: scale(1.4);
+    }
+    .thumb-dot:hover:not(.active) {
+      background: rgba(255,255,255,0.5);
+    }
+
+    #slide-counter {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(248,250,252,0.5);
+      white-space: nowrap;
+    }
+
+    /* ── Slide stage ── */
+    #stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #slide-wrapper {
+      position: relative;
+      flex-shrink: 0;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    #slide-frame {
+      width: 1920px;
+      height: 1080px;
+      border: none;
+      display: block;
+      transform-origin: top left;
+      pointer-events: auto;
+    }
+
+    /* fade transition overlay */
+    #fade-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--bg);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 10;
+    }
+    #fade-overlay.fading { opacity: 1; }
+
+    /* ── Prev / Next arrow buttons ── */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(30, 58, 138, 0.75);
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s, opacity 0.2s;
+      z-index: 20;
+      opacity: 0.6;
+    }
+    .nav-btn:hover { background: var(--primary); opacity: 1; }
+    .nav-btn:disabled { opacity: 0.15; cursor: default; }
+    #btn-prev { left: 16px; }
+    #btn-next { right: 16px; }
+
+    /* ── Bottom bar ── */
+    #bottombar {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--control-bg);
+      border-top: 1px solid rgba(59, 130, 246, 0.1);
+      flex-shrink: 0;
+    }
+
+    .slide-thumb-label {
+      font-size: 11px;
+      color: rgba(248,250,252,0.35);
+      cursor: pointer;
+      padding: 4px 10px;
+      border-radius: 20px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .slide-thumb-label.active {
+      background: rgba(59, 130, 246, 0.2);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .slide-thumb-label:hover:not(.active) {
+      color: #F8FAFC;
+    }
+
+    /* ── Keyboard hint ── */
+    #hint {
+      position: absolute;
+      bottom: 56px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.6);
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 30px;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 1s ease;
+      z-index: 30;
+    }
+    #hint.hidden { opacity: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div id="topbar">
+    <div class="title">나의 커리어 로드맵 &nbsp;·&nbsp; <span>김종민</span></div>
+    <div id="thumb-strip"></div>
+    <div id="slide-counter">1 / 8</div>
+  </div>
+
+  <!-- Stage -->
+  <div id="stage">
+    <div id="slide-wrapper">
+      <iframe id="slide-frame" src="slides/01_cover.html" allowtransparency="true"></iframe>
+      <div id="fade-overlay"></div>
+    </div>
+
+    <button class="nav-btn" id="btn-prev" aria-label="이전 슬라이드">&#8592;</button>
+    <button class="nav-btn" id="btn-next" aria-label="다음 슬라이드">&#8594;</button>
+
+    <div id="hint">← → 키보드로 이동 &nbsp;|&nbsp; 스페이스바로 다음 슬라이드</div>
+  </div>
+
+  <!-- Bottom bar: slide labels -->
+  <div id="bottombar" id="label-strip"></div>
+
+  <script>
+    const SLIDES = [
+      { src: 'slides/01_cover.html',           label: '01 표지' },
+      { src: 'slides/02_self_intro.html',       label: '02 자기소개' },
+      { src: 'slides/03_career_candidates.html',label: '03 직업 후보군' },
+      { src: 'slides/04_smart_goals.html',      label: '04 SMART 목표' },
+      { src: 'slides/05_roadmap_table.html',    label: '05 로드맵 표' },
+      { src: 'slides/06_longterm_vision.html',  label: '06 장기 비전' },
+      { src: 'slides/07_action_pledge.html',    label: '07 실행 서약' },
+      { src: 'slides/08_closing.html',          label: '08 마무리' },
+    ];
+
+    let current = 0;
+    let transitioning = false;
+
+    const frame      = document.getElementById('slide-frame');
+    const wrapper    = document.getElementById('slide-wrapper');
+    const overlay    = document.getElementById('fade-overlay');
+    const counter    = document.getElementById('slide-counter');
+    const thumbStrip = document.getElementById('thumb-strip');
+    const bottombar  = document.getElementById('bottombar');
+    const btnPrev    = document.getElementById('btn-prev');
+    const btnNext    = document.getElementById('btn-next');
+    const hint       = document.getElementById('hint');
+
+    // Build dots & labels
+    SLIDES.forEach((s, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'thumb-dot' + (i === 0 ? ' active' : '');
+      dot.title = s.label;
+      dot.addEventListener('click', () => goTo(i));
+      thumbStrip.appendChild(dot);
+
+      const lbl = document.createElement('div');
+      lbl.className = 'slide-thumb-label' + (i === 0 ? ' active' : '');
+      lbl.textContent = s.label;
+      lbl.addEventListener('click', () => goTo(i));
+      bottombar.appendChild(lbl);
+    });
+
+    function updateUI() {
+      counter.textContent = `${current + 1} / ${SLIDES.length}`;
+      btnPrev.disabled = current === 0;
+      btnNext.disabled = current === SLIDES.length - 1;
+
+      document.querySelectorAll('.thumb-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+      document.querySelectorAll('.slide-thumb-label').forEach((l, i) => {
+        l.classList.toggle('active', i === current);
+      });
+    }
+
+    function goTo(index) {
+      if (transitioning || index === current) return;
+      transitioning = true;
+      overlay.classList.add('fading');
+
+      setTimeout(() => {
+        current = index;
+        frame.src = SLIDES[current].src;
+        updateUI();
+        frame.onload = () => {
+          overlay.classList.remove('fading');
+          transitioning = false;
+        };
+        // Fallback in case onload doesn't fire
+        setTimeout(() => {
+          overlay.classList.remove('fading');
+          transitioning = false;
+        }, 600);
+      }, 250);
+    }
+
+    btnPrev.addEventListener('click', () => goTo(current - 1));
+    btnNext.addEventListener('click', () => goTo(current + 1));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
+    });
+
+    // Resize handler — scale the 1920×1080 slide to fit the stage
+    function resize() {
+      const stageW = window.innerWidth;
+      const stageH = window.innerHeight - 52 - 44; // topbar + bottombar
+      const scaleX = stageW / 1920;
+      const scaleY = stageH / 1080;
+      const scale  = Math.min(scaleX, scaleY) * 0.97; // small margin
+
+      frame.style.transform = `scale(${scale})`;
+      wrapper.style.width   = `${1920 * scale}px`;
+      wrapper.style.height  = `${1080 * scale}px`;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    updateUI();
+
+    // Hide keyboard hint after 4 seconds
+    setTimeout(() => hint.classList.add('hidden'), 4000);
+  </script>
+</body>
+</html>
