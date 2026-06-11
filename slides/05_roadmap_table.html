@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>중기 로드맵 - 2~4학년 항해도</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    /* Custom Table Styling for exact layout preservation */
+    .roadmap-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 15px; /* Creates modern card row appearance */
+      margin-top: 10px;
+    }
+    .roadmap-table th {
+      color: var(--primary);
+      font-size: 20px;
+      font-weight: 800;
+      text-align: left;
+      padding: 10px 25px;
+      border-bottom: 2px solid rgba(30, 58, 138, 0.1);
+    }
+    .roadmap-table td {
+      background: #FFFFFF;
+      padding: 24px 25px;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text-dark);
+      border-top: 1px solid rgba(30, 58, 138, 0.05);
+      border-bottom: 1px solid rgba(30, 58, 138, 0.05);
+      box-shadow: var(--shadow-sm);
+    }
+    /* Round corners on row boundaries */
+    .roadmap-table tr td:first-child {
+      border-left: 6px solid var(--accent);
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+      text-align: center;
+      width: 160px;
+    }
+    .roadmap-table tr.row-primary td:first-child {
+      border-left: 6px solid var(--highlight);
+    }
+    .roadmap-table tr td:last-child {
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+    .year-badge {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .year-badge.highlight {
+      background-color: var(--primary);
+      border: 2px solid var(--highlight);
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    
+    <!-- Background Decor -->
+    <div data-object="true" data-object-type="shape" style="position: absolute; left: 0px; top: 0px; width: 1920px; height: 1080px; z-index: 1; opacity: 0.1; pointer-events: none; background-image: radial-gradient(var(--primary) 1.5px, transparent 1.5px); background-size: 40px 40px;"></div>
+
+    <!-- Header Block -->
+    <div data-object="true" data-object-type="textbox" style="position: absolute; left: 120px; top: 80px; width: 1680px; height: 120px; z-index: 10;">
+      <span class="step-tag">STEP 3</span>
+      <div class="accent-bar"></div>
+      <h2 class="slide-title">중기 로드맵 (2학년 ~ 4학년 대학 항해도)</h2>
+    </div>
+
+    <!-- Table Container Card Wrapper -->
+    <div data-object="true" data-object-type="shape" class="roadmap-card" style="position: absolute; left: 120px; top: 240px; width: 1680px; height: 720px; z-index: 10; display: flex; flex-direction: column; justify-content: space-between; background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); padding: 40px;">
+      
+      <table class="roadmap-table">
+        <thead>
+          <tr>
+            <th style="text-align: center;">학년</th>
+            <th>📚 학업 · 전공 역량</th>
+            <th>🧭 진로 준비 · 설계</th>
+            <th>🤝 경험 · 다각 역량</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 2학년 Row -->
+          <tr class="row-primary">
+            <td>
+              <span class="year-badge highlight">2 학 년</span>
+            </td>
+            <td>
+              병태생리학, 약리학, 건강사정 교과목 충실 이수 및 기초 간호 기본 다지기
+            </td>
+            <td>
+              <span class="text-highlight">교직이수 신청 여부 최종 결정</span>,<br>응급실 선배 및 현직 간호사 심층 인터뷰
+            </td>
+            <td>
+              공인 <span class="text-highlight">토익 800점 이상</span> 목표 학습 달성,<br>간호학과 전공 동아리 지속적 주도 활동
+            </td>
+          </tr>
+          
+          <!-- 3학년 Row -->
+          <tr>
+            <td>
+              <span class="year-badge">3 학 년</span>
+            </td>
+            <td>
+              임상 간호 실습 돌입 및 관심 분야인 <span class="text-highlight">응급실·수술실 실습 집중 관찰</span>
+            </td>
+            <td>
+              실습 시 능동적 진로 연계 질문 및 정보 수집,<br>해외 진출 관심 시 미국간호사(NCLEX-RN) 자료수집 시작
+            </td>
+            <td>
+              학회 학술대회 포스터 발표 참가 도전,<br>전공 연계 정기적인 보건의료 봉사 유지
+            </td>
+          </tr>
+          
+          <!-- 4학년 Row -->
+          <tr>
+            <td>
+              <span class="year-badge">4 학 년</span>
+            </td>
+            <td>
+              간호사 국가고시 통과 완벽 준비 및<br>상반기 종합병원 공개 채용 집중 대비
+            </td>
+            <td>
+              응급실 맞춤형 취업 구체화 달성,<br>해외 진출 준비를 위한 <span class="text-highlight">NCLEX 모의문제 풀이 시작</span>
+            </td>
+            <td>
+              합격을 위한 자기소개서 작성 완료 및<br>교내외 모의면접 집중 트레이닝 참가
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Navigation Tips (Dynamic Labeling) -->
+      <div style="border-top: 1px solid rgba(30, 58, 138, 0.1); padding-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 16px; font-weight: 700; color: var(--text-muted);">※ 본 항해도는 학년별 핵심 과업(Milestones)에 기반하여 작성되었습니다.</span>
+        <span style="font-size: 18px; font-weight: 800; color: var(--primary);">바다의 흐름에 맞춰 상시 업데이트 및 튜닝 진행 예정</span>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>

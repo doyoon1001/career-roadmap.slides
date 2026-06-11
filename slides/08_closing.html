@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>마무리 - 로드맵의 가치</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container" style="background-color: var(--primary);">
+    
+    <!-- Background Decor Overlay -->
+    <div data-object="true" data-object-type="shape" style="position: absolute; left: 0px; top: 0px; width: 1920px; height: 1080px; z-index: 1; opacity: 0.08; pointer-events: none; background-image: radial-gradient(#FFFFFF 1.5px, transparent 1.5px); background-size: 40px 40px;"></div>
+
+    <!-- Radial glowing light in center -->
+    <div data-object="true" data-object-type="shape" style="position: absolute; left: 460px; top: 40px; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%); z-index: 2;"></div>
+
+    <!-- Centered Content Box -->
+    <div data-object="true" data-object-type="shape" style="position: absolute; left: 260px; top: 140px; width: 1400px; height: 800px; z-index: 10; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center; color: white;">
+      
+      <!-- Floating Icon -->
+      <div class="float-animation" style="width: 140px; height: 140px; display: flex; justify-content: center; align-items: center; background-color: rgba(255, 255, 255, 0.08); border: 2px solid rgba(251, 191, 36, 0.4); border-radius: 50%; box-shadow: 0 15px 35px rgba(0,0,0,0.2);">
+        <!-- Sailboat Icon (SVG) -->
+        <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 18H2a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4z" />
+          <path d="M10 2v16" />
+          <path d="M10 2a12 12 0 0 1 12 12H10" />
+        </svg>
+      </div>
+
+      <!-- Main Closing Statement Block -->
+      <div>
+        <div style="font-family: Georgia, serif; font-size: 110px; color: rgba(251, 191, 36, 0.4); line-height: 0.5; margin-bottom: -10px;">“</div>
+        <h1 style="font-size: 60px; font-weight: 800; color: white; line-height: 1.5; margin: 0 0 20px 0; text-shadow: 0 4px 10px rgba(0,0,0,0.3); text-wrap: keep-all;">
+          로드맵은 완벽한 지도가 아니라,<br>
+          <span style="color: var(--highlight);">항해를 시작할 용기</span>다.
+        </h1>
+        <div style="font-family: Georgia, serif; font-size: 110px; color: rgba(251, 191, 36, 0.4); line-height: 0.5; margin-top: 30px;">”</div>
+      </div>
+
+      <!-- Affiliation and Thanks Footnote -->
+      <div style="border-top: 1px solid rgba(255, 255, 255, 0.15); width: 600px; padding-top: 35px;">
+        <p style="font-size: 32px; font-weight: 800; color: white; margin: 0 0 10px 0; letter-spacing: -0.01em;">감사합니다</p>
+        <p style="font-size: 20px; font-weight: 600; color: rgba(248, 250, 252, 0.7); margin: 0; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <span>🌱</span> 강원대학교 간호학과 1학년 김종민
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0",
+  "format": "html",
+  "metadata": {
+    "title": "My Career Roadmap - 김종민",
+    "description": "강원대학교 간호학과 1학년 김종민의 커리어 로드맵",
+    "author": "김종민"
+  },
+  "canvas": {"width": 1920, "height": 1080},
+  "playlist": [
+    "01_cover.html",
+    "02_self_intro.html",
+    "03_career_candidates.html",
+    "04_smart_goals.html",
+    "05_roadmap_table.html",
+    "06_longterm_vision.html",
+    "07_action_pledge.html",
+    "08_closing.html"
+  ]
+}

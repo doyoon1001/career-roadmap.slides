@@ -1,0 +1,91 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+:root {
+  --primary: #1E3A8A;
+  --primary-rgb: 30, 58, 138;
+  --accent: #3B82F6;
+  --accent-rgb: 59, 130, 246;
+  --highlight: #FBBF24;
+  --bg-color: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --text-dark: #0F172A;
+  --text-muted: #475569;
+  --text-light: #F8FAFC;
+  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 25px -5px rgba(30, 58, 138, 0.08), 0 8px 10px -6px rgba(30, 58, 138, 0.08);
+  --shadow-lg: 0 20px 35px -5px rgba(30, 58, 138, 0.12), 0 12px 16px -8px rgba(30, 58, 138, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  background-color: #111;
+}
+
+/* Slide Container Base */
+.slide-container {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+}
+
+/* Card Style */
+.roadmap-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(30, 58, 138, 0.05);
+  padding: 30px;
+  transition: transform 0.3s ease;
+}
+
+/* Header UI Elements */
+.accent-bar {
+  width: 70px;
+  height: 8px;
+  background-color: var(--highlight);
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.step-tag {
+  display: inline-block;
+  background-color: var(--primary);
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 30px;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Typography Helpers */
+.slide-title {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.text-highlight {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.text-gold {
+  color: var(--highlight);
+  font-weight: 800;
+}
